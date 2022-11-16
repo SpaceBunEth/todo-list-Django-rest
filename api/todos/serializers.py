@@ -17,6 +17,8 @@ class TodoSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         category = validated_data.pop('category')
-        cat_instance = Category.objects.get(name=category['name'])
-        todo = Todo.objects.create(**validated_data, category=cat_instance)
+        obj, created = Category.objects.get_or_create(name=category['name'])
+        p(obj)
+        p(created)
+        todo = Todo.objects.create(**validated_data, category=obj)
         return todo
