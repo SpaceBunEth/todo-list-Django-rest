@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Create your views here.
+#
 
 class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
